@@ -1,0 +1,23 @@
+div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: flex-end;
+}
+
+.box {
+    width: 100px;
+    color: white;
+}
+
+.box1 {
+    background-color: green;
+}
+.box2 {
+    background-color: blue;
+
+}
+.box3 {
+    background-color: orangered;
+
+}
