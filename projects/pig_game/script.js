@@ -30,40 +30,71 @@ const switchPlayer = function () {
 
 // Rolling Dice
 btnRoll.addEventListener("click", function () {
+  if(playing) {
   // Generate Dice Number
-  const dice = Math.trunc(Math.random() * 6) + 1;
+    const dice = Math.trunc(Math.random() * 6) + 1;
 
-  // Display The Dice
-  diceElement.src = `dice-${dice}.png`;
-  diceElement.classList.remove("hidden");
+    // Display The Dice
+    diceElement.src = `dice-${dice}.png`;
+    diceElement.classList.remove("hidden");
 
-  // check if not 1 then continue play , else swtich player
-  if (dice !== 1) {
-    currentScore += dice;
-    document.getElementById(`current--${activePlayer}`).textContent =
-      currentScore;
-  } else {
-    switchPlayer();
+    // check if not 1 then continue play , else swtich player
+    if (dice !== 1) {
+      currentScore += dice;
+      document.getElementById(`current--${activePlayer}`).textContent =
+        currentScore;
+    } else {
+      switchPlayer();
+    }
   }
 });
 
 btnHold.addEventListener("click", function () {
   if (playing) {
+    // adding current score to active player
     scores[activePlayer] += currentScore;
     document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
 
-    if (scores[activePlayer] >= 20) {
-      plyaing = false;
+      // check if player win >= 100
+    if (scores[activePlayer] >= 100) {
+      playing = false;
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.add("player--winner");
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.remove("player--active");
+        diceElement.classList.add('hidden');
+        
     } else {
-      switchPlayer();
-    }
-  } else {
+    switchPlayer();
   }
+}
+});
+
+btnNew.addEventListener('click', function() {
+  //1. reset the score
+  score0Element.textContent = 0
+  score1Element.textContent = 0 
+
+  // 2. reset the current score
+  current0Element.textContent = 0;
+  current1Element.textContent = 0;
+
+  // 3. remove the player winner class
+  document
+  .querySelector(`.player--${activePlayer}`)
+  .classList.remove("player--winner");
+  document
+        .querySelector(`.player--0`)
+        .classList.add("player--active");
+        
+  // 4. reset the variable
+  playing = true;
+  currentScore = 0;
+  scores[0] = 0;
+  scores[1] = 0;
+  activePlayer = 0;
+  diceElement.classList.add('hidden');
 });
