@@ -11,7 +11,7 @@ const btnHold = document.querySelector(".btn--hold");
 const current0Element = document.querySelector("#current--0");
 const current1Element = document.querySelector("#current--1");
 
-// reset Element
+// reset html element text
 const scores = [0, 0];
 score0Element.textContent = 0;
 score1Element.textContent = 0;
@@ -20,6 +20,7 @@ let currentScore = 0;
 let playing = true;
 diceElement.classList.add("hidden");
 
+// function for switching player if hold or get 1
 const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
   currentScore = 0;
@@ -49,6 +50,7 @@ btnRoll.addEventListener("click", function () {
   }
 });
 
+// if player hold switch to anthor player
 btnHold.addEventListener("click", function () {
   if (playing) {
     // adding current score to active player
@@ -73,6 +75,7 @@ btnHold.addEventListener("click", function () {
 }
 });
 
+// reset to a new game
 btnNew.addEventListener('click', function() {
   //1. reset the score
   score0Element.textContent = 0
