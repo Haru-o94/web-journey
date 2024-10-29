@@ -1,38 +1,30 @@
-// function calcAverage(n1,n2,n3) {
-//     return (n1 + n2 + n3) / 3
-// }
+'use strict'
 
-// function checkWinner() {
-//     const avgDolhins = calcAverage(85,54,41);
-//     const avgKoalas = calcAverage(23,34,27)
-//     console.log(avgDolhins)
-//     console.log(avgKoalas)
-//     //const winner = avgDolhins > avgKoalas
-//     return avgDolhins > avgKoalas
-// }
-
-// console.log(checkWinner())
-
-
-const arr = [1,2,3,4,5];
-const [a,,b,...c] = arr;
-console.log(a,b,c)
-// console.log(...arr)
-
-const obj = {
-    name: 'anas',
-    age : 244,
-    school: 'redsea',
-    skills: {
-        'html': '50%',
-        'css': '70%',
-        'js': '100%'
-    }
+// defalut paramater
+function sum(a=1,b=2) {
+    return a+b;
 }
 
-console.log(obj)
-const {name, age} = obj;
-console.log(name,age);
-const {school:sc} = obj;
-console.log(sc);
+console.log(sum(4,78))
 
+// passing by value
+// passing by refernce (does not have it)
+
+// first class function & high order function
+// js use callback all the time
+/*
+    addEventListener => high-order functin
+    function => callback function
+*/
+const sm = function () {
+    console.log('clicked');
+};
+
+document.body.addEventListener('click', sm);
+
+// deep dive into closure
+// the call and apply and bind method in function
+
+// imedatily invoke function 
+
+// closure
